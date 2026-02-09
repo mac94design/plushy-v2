@@ -1,0 +1,389 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+:root {
+  --clr-1: #111111;
+  --clr-2: #ffffff;
+
+  --clr-3: #ffaacb;
+  --clr-4: #ff5294;
+  --gradient: #ffaacb, #ff5294;
+
+  --clr-p: #3a3a3a;
+  --clr-shadow: rgba(0, 0, 0, 0.5);
+  --clr-border: rgba(0, 0, 0, 0.1);
+  --clr-bg: #ffcade;
+  --clr-overlay: rgba(0, 0, 0, 0.8);
+}
+
+@font-face {
+  font-family: InstrumentSans;
+  src: url(./font/InstrumentSans-Variable.ttf) format("truetype");
+  font-weight: 100 200 300 400 500 600 700 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Gluten;
+  src: url(./font/Gluten-Variable.ttf) format("opentype");
+  font-weight: 100 200 300 400 500 600 700 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+
+  font-size: 15px;
+  font-weight: 400;
+  font-family: "InstrumentSans", sans-serif;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--clr-4);
+  background-color: var(--clr-2);
+  text-wrap: balance;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+li,
+button {
+  font-family: "InstrumentSans", sans-serif;
+}
+
+h1 {
+  font-size: clamp(1rem, 12vw, 15rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+h2 {
+  font-size: clamp(1rem, 6vw, 5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.06em;
+}
+
+p,
+li,
+a,
+button {
+  font-size: 15px;
+}
+
+p {
+  color: var(--clr-4);
+}
+a {
+  color: var(--clr-4);
+  transition: 0.3s;
+}
+a:hover {
+  cursor: pointer;
+}
+
+.btn01 {
+  background-color: var(--clr-4);
+  color: var(--clr-2);
+  border: solid 1px var(--clr-4);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.btn02 {
+  background-color: var(--clr-2);
+  color: var(--clr-4);
+  border: solid 1px var(--clr-4);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.main {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.section {
+  width: 100%;
+  padding: 60px;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-2);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+}
+
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--clr-bg);
+  border-top-color: var(--clr-3);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader-text {
+  font-family: "InstrumentSans", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--clr-3);
+  letter-spacing: 0.1em;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Prevent scrolling while preloader is visible */
+body.preloader-active {
+  overflow: hidden;
+}
+
+/* Background video */
+.background-video {
+  display: none;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+
+  opacity: 0.3;
+}
+
+/* Header */
+header {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  max-width: 1920px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Hero Section */
+.hero01 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero01-top {
+  width: 100%;
+  margin-bottom: -1rem;
+
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero01-top > h2 {
+  color: var(--clr-3);
+}
+.hero01-location {
+  color: var(--clr-3);
+}
+
+.hero01-mid {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero01-bot {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero01-description {
+  max-width: clamp(1rem, 30vw, 600px);
+}
+
+.hero01-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: start;
+  align-items: start;
+}
+.plushy-mobile {
+  display: none;
+}
+.plushy-desktop {
+  position: relative;
+  z-index: 1;
+}
+.plushy {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+
+  width: 25vw;
+  height: 800px;
+
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+
+/* Footer */
+footer {
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  max-width: 1920px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: clamp(1rem, 15vw, 15rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.06em;
+  }
+  h2 {
+    font-size: clamp(1rem, 8vw, 12rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.06em;
+  }
+
+  p,
+  li,
+  a,
+  button {
+    font-size: 12px;
+  }
+
+  .section {
+    padding: 60px 20px;
+  }
+
+  .plushy-desktop {
+    display: none;
+  }
+  .plushy-mobile {
+    width: 100%;
+    height: 50svh;
+
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  .plushy {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transform: none;
+  }
+
+  .hero01 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: start;
+    align-items: start;
+  }
+  .hero01-bot {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: start;
+    align-items: start;
+  }
+  .hero01-description {
+    max-width: 100%;
+  }
+  .hero01-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero01-buttons > a {
+    width: 100%;
+    text-align: center;
+  }
+}
